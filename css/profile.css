@@ -1,0 +1,140 @@
+.active {
+    color: #EC76AC !important;
+    font-weight: bold !important;
+    border-bottom: #EC76AC solid 3px !important;
+    padding-bottom: 0px !important;
+
+}
+
+.patient-section {
+    margin-top: 15vh;
+
+}
+
+.patient-title {
+    text-align: right;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+
+}
+
+.title-line {
+    background-color: #707070;
+    width: 120%;
+    height: 5px;
+}
+
+.patient-body .form-grup {
+    width: 250px;
+    margin-right: 120px;
+}
+
+.patient-body .form-control {
+    background-color: #F5F5F5 !important;
+    ;
+    border: none !important;
+}
+
+.patient-body h5 {
+    width: 33%;
+}
+
+.btn-outline-secondary {
+    background-color: #F5F5F5 !important;
+    ;
+    border: none !important;
+}
+
+.section-line {
+    border-bottom: 3px solid #000;
+    width: 50%;
+}
+
+.form-control {
+    background-color: #F5F5F5 !important;
+    ;
+    border: none !important;
+}
+
+.action-icons {
+
+    padding: 10px 15px;
+    background-color: #EC76AC;
+    color: #FFF;
+    border-radius: 10px;
+}
+
+.action-icons i {
+    transition: all .2s ease-in-out;
+
+}
+
+.action-icons:hover {
+    cursor: pointer;
+}
+
+.action-icons:hover i {
+    transform: rotate(-45deg);
+}
+
+.form-group .delete-icon {
+    position: absolute;
+    border-radius: 50%;
+    padding: 5px 7px;
+    color: #FFF;
+    background-color: red;
+    font-size: 10px;
+    top: -7px;
+    right: -7px;
+    transition: all 0.2s ease-in-out;
+    display: none;
+}
+
+.delete-icon:hover {
+    font-size: 14px;
+    padding: 7px 8px;
+    cursor: pointer;
+}
+.delete-btn{
+    display: none;
+}
+
+@media screen and (max-width:768px) {
+    .patient-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .patient-section h5 {
+        font-size: 1rem;
+    }
+
+    .patient-body .form-grup {
+        width: 60%;
+        margin-right: 0px;
+    }
+
+    .section-line {
+        width: 100%;
+    }
+
+    .treatment {
+        width: 100% !important;
+    }
+
+    .treatment h5 {
+        font-size: .75rem;
+    }
+
+    .form-group {
+        width: 100% !important;
+        display: block !important;
+    }
+
+    .form-group input {
+        width: 100% !important;
+        margin-bottom: 10px !important;
+    }
+
+
+}

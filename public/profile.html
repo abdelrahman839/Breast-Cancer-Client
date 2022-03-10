@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Mukta:wght@200&family=Roboto:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/all.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/profile.css">
+    <title>Breast Cancer</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <a class="nav-link active" href="/public/profile.html">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+
+                <ul class="navbar-nav ml-auto ">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/public/blog.html">معلومات عامة</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/public/hospitals.html">المستشفيات</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/public/index.html">الرئيسية</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <a class="navbar-brand" href="/public/index.html">
+                <img src="../Images/logo.svg" width="60" height="60" class="d-inline-block align-top" alt="logo">
+            </a>
+
+        </div>
+
+    </nav>
+
+    <section class="patient-section d-flex justify-content-center">
+        <div class="container-fluid d-flex align-items-end flex-column">
+            <div class="patient-title">
+                <h2>بيانات المريض</h2>
+                <div class="title-line"></div>
+            </div>
+
+            <div class="patient-body mr-3 mt-5">
+                <div class="d-flex justify-content-between align-items-center text-right  mb-3 ">
+                    <div class="form-grup ">
+                        <input type="text" class="form-control ">
+                    </div>
+                    <h5>الاسم الاول</h5>
+                </div>
+                <div class="d-flex justify-content-between align-items-center text-right  mb-3 ">
+                    <div class="form-grup ">
+                        <input type="text" class="form-control ">
+                    </div>
+                    <h5>الاسم الاخير</h5>
+                </div>
+                <div class="d-flex justify-content-between align-items-center text-right  mb-3 ">
+                    <div class="form-grup ">
+                        <input type="text" class="form-control ">
+                    </div>
+                    <h5>الايميل</h5>
+                </div>
+                <div class="d-flex justify-content-between align-items-center text-right  mb-3 ">
+                    <div class="form-grup ">
+                        <input type="text" class="form-control ">
+                    </div>
+                    <h5>التليفون</h5>
+                </div>
+                <div class="d-flex justify-content-between align-items-center text-right  mb-3 ">
+                    <div class="form-grup ">
+                        <input type="date" class="form-control ">
+                    </div>
+                    <h5>تاريخ الميلاد</h5>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center text-right  mb-3 ">
+                    <div class="form-grup ">
+
+                        <div class="btn-group btn-group-toggle d-flex justify-content-between " data-toggle="buttons">
+                            <label class="btn btn-outline-secondary rounded mr-5">
+                                <input type="radio" name="gender" id="gender1"> انثي
+                            </label>
+
+                            <label class="btn btn-outline-secondary rounded">
+                                <input type="radio" name="gender" id="gender2"> ذكر
+                            </label>
+
+                        </div>
+
+                    </div>
+                    <h5>النوع</h5>
+                </div>
+
+
+                <div class="d-flex justify-content-between align-items-center text-right  mb-3 ">
+                    <div class="form-grup ">
+
+                        <div class="btn-group btn-group-toggle d-flex justify-content-between " data-toggle="buttons">
+                            <label class="btn btn-outline-secondary rounded mr-5 w-50">
+                                <input type="radio" name="smoked" id="smoked1"> لا
+                            </label>
+
+                            <label class="btn btn-outline-secondary rounded w-50">
+                                <input type="radio" name="smoked" id="smoked2"> نعم
+                            </label>
+
+                        </div>
+
+                    </div>
+                    <h5>مدخن</h5>
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+    </section>
+    <div class="d-flex justify-content-end my-5 ">
+        <div class="container-fluid section-line"></div>
+    </div>
+
+    <section class="treatment-section d-flex justify-content-center ">
+        <div class="container-fluid d-flex align-items-end flex-column">
+            <div class="patient-title mb-5">
+                <h2>بيانات العلاج</h2>
+                <div class="title-line"></div>
+            </div>
+            <div class="w-75 mr-3  treatment ">
+
+
+                <div class="row justify-content-end align-items-center">
+
+                    <div class="col-4 d-flex align-items-end flex-column">
+                        <h5>موعد الدواء</h5>
+                    </div>
+                    <div class="col-4 d-flex align-items-end flex-column">
+                        <h5>عدد المرات </h5>
+                    </div>
+                    <div class="col-4 d-flex align-items-end flex-column">
+                        <h5>اسم الدواء</h5>
+                    </div>
+                </div>
+
+
+
+                <div id="treatment-body" class="row justify-content-end align-items-center ">
+
+                </div>
+
+            </div>
+
+            <div class="row my-3 mr-3">
+
+                <div id="delete" class="delete action-icons mr-3 ">
+                    <i class="fa-solid fa-trash"></i>
+                </div>
+
+                <div id="add" class="add action-icons">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <div class="d-flex justify-content-end my-5 ">
+        <div class="container-fluid section-line"></div>
+    </div>
+
+    <section class="treatment-section d-flex justify-content-center ">
+        <div class="container-fluid d-flex align-items-end flex-column">
+            <div class="patient-title mb-5">
+                <h2>بيانات الدكتور</h2>
+                <div class="title-line"></div>
+            </div>
+
+
+
+            <div class="w-75 mr-3  treatment ">
+
+
+                <div class="row justify-content-end align-items-center">
+
+
+                    <div class="col-5 d-flex align-items-end flex-column">
+                        <h5>موعد الزياره</h5>
+                    </div>
+                    <div class="col-5 d-flex align-items-end flex-column">
+                        <h5>اسم الدكتور</h5>
+                    </div>
+                </div>
+
+
+                <div id="dr-body" class="row justify-content-end align-items-center ">
+
+                   
+
+                </div>
+
+            </div>
+
+            <div class="row my-3 mr-3">
+
+                <div id="delete-dr" class="delete action-icons mr-3 ">
+                    <i class="fa-solid fa-trash"></i>
+                </div>
+
+                <div id="add-dr" class="add action-icons">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+    </section>
+
+    <footer class="d-flex justify-content-center ">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4 text-center my-5">
+                    <h5>وسائل التواصل الاجتماعي</h5>
+                    <div class="row justify-content-center align-items-center">
+                        <div class="rounded-social mr-3">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </div>
+                        <div class="rounded-social mr-3">
+                            <i class="fa-brands fa-instagram"></i>
+                        </div>
+                        <div class="rounded-social mr-3">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </div>
+                        <div class="rounded-social mr-3">
+                            <i class="fa-brands fa-twitter"></i>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-4 text-center  my-5">
+                    <h5>اتصل بنا</h5>
+                    <div class="row justify-content-center align-items-center">
+                        <i class="fa-solid fa-envelope mr-2"></i>
+                        <h6 class=" m-0">example@gmail.com</h6>
+                    </div>
+                    <div class="row justify-content-center align-items-center mt-2">
+                        <i class="fa-solid fa-phone mr-2"></i>
+                        <h6 class=" m-0">19019</h6>
+                    </div>
+                </div>
+
+                <div class="col-md-4 text-center  my-5">
+                    <h5>ارتباط مفيد</h5>
+                    <div class="row justify-content-center align-items-center">
+                        <a href="/public/index.html">
+                            <h6 class="m-0">الرئيسية</h6>
+                        </a>
+                        <i class="fa-solid fa-house ml-2"></i>
+                    </div>
+                    <div class="row justify-content-center align-items-center">
+                        <a href="/public/hospitals.html">
+                            <h6 class="m-0">المستشفيات</h6>
+                        </a>
+                        <i class="fa-solid fa-hospital ml-2"></i>
+                    </div>
+                    <div class="row justify-content-center align-items-center">
+                        <a href="/public/blog.html">
+                            <h6 class="m-0">معلومات عامة</h6>
+                        </a>
+                        <i class="fa-solid fa-info ml-2"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/jquery.slim.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/profile.js"></script>
+</body>
+
+</html>
