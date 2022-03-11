@@ -13,6 +13,7 @@ let deleteBtn = document.querySelectorAll('.delete-btn');
 add.addEventListener('click', function (e) {
 
     addNewSection();
+    
 
 
     howMany = document.querySelectorAll('.how-many-sections');
