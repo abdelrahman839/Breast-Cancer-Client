@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="321308129828-t3304991mrolsl30ck1f91s6ekeatnpj.apps.googleusercontent.com.apps.googleusercontent.com">
+  
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -23,10 +26,15 @@
     <div class="required-layer">
         <div class="login">
             <h2 class="my-5">سجل الدخول</h2>
-            <button class="btn btn-danger rounded-pill px-4 py-3 mb-4">
-                <i class="fa-solid fa-m"></i>
-                <div data-onsuccess="onSignIn"> سجل الدخول باستخدام جيميل</div>
-            </button>
+
+         
+            
+                <button  class="btn btn-danger rounded-pill px-4 py-3 mb-4 d-flex justify-content-center align-items-center position-relative overflow-hidden" >
+                    <i class="fa-solid fa-m"></i>
+                    <span> سجل الدخول باستخدام جيميل</span>
+                    <div id="google-sign-in"  class="g-signin2" data-onSuccess="onSignIn" style="width: 300px; height: 300px;"></div>
+                </button>
+
 
             <button class="btn btn-primary rounded-pill px-4 py-3">
                 <i class="fa-solid fa-phone"></i>
@@ -447,11 +455,12 @@
         </div>
     </footer>
 
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="../js/jquery.slim.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/script.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
 </body>
 
 </html>
