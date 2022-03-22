@@ -20,12 +20,12 @@
 
 <body>
 
-    <!-- <div class="required-layer">
+    <div class="required-layer">
         <div class="login">
             <h2 class="my-5">سجل الدخول</h2>
             <button class="btn btn-danger rounded-pill px-4 py-3 mb-4">
                 <i class="fa-solid fa-m"></i>
-                <span> سجل الدخول باستخدام جيميل</span>
+                <div data-onsuccess="onSignIn"> سجل الدخول باستخدام جيميل</div>
             </button>
 
             <button class="btn btn-primary rounded-pill px-4 py-3">
@@ -33,7 +33,7 @@
                 <span> سجل الدخول باستخدام الهاتف</span>
             </button>
         </div>
-    </div> -->
+    </div>
 
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top ">
@@ -447,7 +447,7 @@
         </div>
     </footer>
 
-
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="../js/jquery.slim.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
