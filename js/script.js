@@ -46,7 +46,7 @@ async function onSignIn(googleUser) {
             "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
         },
         credentials: 'include',
-        body: id_token,
+        body: { data: id_token },
     })
 
 
