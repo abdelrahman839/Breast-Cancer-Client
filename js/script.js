@@ -36,11 +36,21 @@ function onSignIn(googleUser) {
     var id_token = googleUser.getAuthResponse().id_token;
     console.log("ID Token: " + id_token);
 
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", 'http://localhost:5000/user/sign-in', true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send(JSON.stringify({
-        id_token,
+
+    const http = new XMLHttpRequest();
+    const url = 'http://localhost:5000/user/sign-in';
+    http.open('POST', url, true);
+
+    //Send the proper header information along with the request
+    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+    http.onreadystatechange = function () {//Call a function when the state changes.
+        if (http.readyState == 4 && http.status == 200) {
+            alert(http.responseText);
+        }
+    }
+    http.send(JSON.stringify({
+        id_token
     }));
 
 
