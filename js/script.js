@@ -43,7 +43,7 @@ async function onSignIn(googleUser) {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(data)
+        body: 'test=lol'
     });
 
     // const url = 'http://localhost:5000/user/sign-in';
