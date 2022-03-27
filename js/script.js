@@ -48,7 +48,6 @@ function onSignIn(googleUser) {
         credentials: 'include',
         body: id_token,
       })
-      .then(res.json())
       .then(res => {
         // Handle response 
         console.log('Response: ', res);
