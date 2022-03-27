@@ -35,40 +35,32 @@ async function onSignIn(googleUser) {
     // The ID token you need to pass to your backend:
     var id_token = await googleUser.getAuthResponse().id_token;
     console.log("ID Token: " + id_token);
+    fetchData();
 
+    // const url = 'http://localhost:5000/user/sign-in';
 
+    // await fetch(url, {
+    //     method: 'POST',
+    //     headers: {
+    //         "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+    //     },
+    //     credentials: 'include',
+    //     body: { data: id_token },
+    // })
 
-    const url = 'http://localhost:5000/user/sign-in';
-
-    await fetch(url, {
-        method: 'POST',
-        headers: {
-            "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
-        },
-        credentials: 'include',
-        body: { data: id_token },
-    })
-
-
-
-    // const http = new XMLHttpRequest();
-
-    // http.open('POST', url, true);
-
-    // //Send the proper header information along with the request
-    // http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-
-    // http.onreadystatechange = function () {//Call a function when the state changes.
-    //     if (http.readyState == 4 && http.status == 200) {
-    //         alert(http.responseText);
-    //     }
-    // }
-    // http.send(JSON.stringify({
-    //     id_token:id_token,
-    // }));
-
-
-
+ 
 }
 
-
+const fetchData = async () => {
+    const rawResponse = await fetch('http://localhost:5000/user/sign-in', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({id_token})
+    });
+    const content = await rawResponse.json();
+  
+    console.log(content);
+  }
