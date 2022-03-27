@@ -37,14 +37,29 @@ async function onSignIn(googleUser) {
     console.log("ID Token: " + id_token);
     const data = { "test": "ds", "lol": "dsd" }
 
-    await fetch('http://localhost:5000/user/sign-in', {
-        mode: 'no-cors',
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: 'test=lol'
-    });
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", 'http://localhost:5000/user/sign-in', true);
+
+    //Send the proper header information along with the request
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    xhr.onreadystatechange = function () { // Call a function when the state changes.
+        if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+            // Request finished. Do processing here.
+        }
+    }
+    xhr.send("foo=bar&lorem=ipsum");
+
+
+    // await fetch('http://localhost:5000/user/sign-in', {
+    //     mode: 'no-cors',
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body: 'test=lol'
+    // });
 
     // const url = 'http://localhost:5000/user/sign-in';
 
@@ -60,14 +75,3 @@ async function onSignIn(googleUser) {
 
 }
 
-const fetchData = async (id_token) => {
-    await fetch('http://localhost:5000/user/sign-in', {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.parse({ data: id_token })
-    });
-
-}
