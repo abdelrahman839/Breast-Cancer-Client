@@ -37,12 +37,11 @@ async function onSignIn(googleUser) {
     console.log("ID Token: " + id_token);
 
     await fetch('http://localhost:5000/user/sign-in', {
-        mode: 'no-cors',
         method: 'POST',
         headers: {
-            "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+            'Content-Type': 'application/json'
         },
-        body: `${id_token}`
+        body: JSON.stringify({id_token})
     });
 
     // const url = 'http://localhost:5000/user/sign-in';
