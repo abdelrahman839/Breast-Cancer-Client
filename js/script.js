@@ -36,23 +36,12 @@ function onSignIn(googleUser) {
     var id_token = googleUser.getAuthResponse().id_token;
     console.log("ID Token: " + id_token);
 
-
-    $.ajax({
-        contentType: 'application/json',
-        data: {
-            id_token,
-        },
-        dataType: 'json',
-        success: function(data){
-            app.log("device control succeeded");
-        },
-        error: function(){
-            app.log("Device control failed");
-        },
-        processData: false,
-        type: 'POST',
-        url: 'http://localhost:5000/user/sign-in'
-    });
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", 'http://localhost:5000/user/sign-in', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify({
+        id_token,
+    }));
 
 
 
