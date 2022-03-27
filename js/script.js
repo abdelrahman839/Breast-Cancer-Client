@@ -39,18 +39,17 @@ async function onSignIn(googleUser) {
 
 
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", 'http://localhost:5000/user/sign-in', true);
-
-    //Send the proper header information along with the request
+    var url = "http://localhost:5000/user/sign-in";
+    xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-Type", "application/json");
-
-    xhr.onreadystatechange = function () { // Call a function when the state changes.
-        if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-            // Request finished. Do processing here.
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // var json = JSON.parse(xhr.responseText);
+            // console.log(json.email + ", " + json.password);
         }
-    }
-    xhr.send("foo=bar&lorem=ipsum");
-
+    };
+    var data = JSON.stringify({"email": "hey@mail.com", "password": "101010"});
+    xhr.send(data);
 
     // await fetch('http://localhost:5000/user/sign-in', {
     //     mode: 'no-cors',
