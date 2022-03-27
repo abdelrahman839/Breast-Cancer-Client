@@ -33,9 +33,9 @@ async function onSignIn(googleUser) {
     // console.log("Email: " + profile.getEmail());
 
     // The ID token you need to pass to your backend:
-    var id_token = await googleUser.getAuthResponse().id_token;
-    console.log("ID Token: " + id_token);
-    const data = { "test": "ds", "lol": "dsd" }
+    // var id_token = await googleUser.getAuthResponse().id_token;
+    // console.log("ID Token: " + id_token);
+    // const data = { "test": "ds", "lol": "dsd" }
 
 
     var xhr = new XMLHttpRequest();
