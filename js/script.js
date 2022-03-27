@@ -58,7 +58,7 @@ const fetchData = async (id_token) => {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ data: id_token })
+        body: JSON.parse({ data: id_token })
     });
 
 }
