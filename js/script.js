@@ -48,14 +48,7 @@ function onSignIn(googleUser) {
         credentials: 'include',
         body: id_token,
       })
-      .then(res => {
-        // Handle response 
-        console.log('Response: ', res);
-      })
-      .catch(err => {
-        // Handle error 
-        console.log('Error message: ', error);
-      });
+     
 
 
     // const http = new XMLHttpRequest();
