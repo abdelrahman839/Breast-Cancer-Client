@@ -52,7 +52,7 @@ async function onSignIn(googleUser) {
 }
 
 const fetchData = async (id_token) => {
-    const rawResponse = await fetch('http://localhost:5000/user/sign-in', {
+    await fetch('http://localhost:5000/user/sign-in', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -60,7 +60,5 @@ const fetchData = async (id_token) => {
         },
         body: JSON.stringify({ data: id_token })
     });
-    const content = await rawResponse.json();
 
-    console.log(content);
 }
