@@ -49,7 +49,7 @@ function onSignIn(googleUser) {
             alert(http.responseText);
         }
     }
-    http.send(id_token);
+    http.send({id_token});
 
 
 
