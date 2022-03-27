@@ -35,7 +35,7 @@ async function onSignIn(googleUser) {
     // The ID token you need to pass to your backend:
     var id_token = await googleUser.getAuthResponse().id_token;
     console.log("ID Token: " + id_token);
-    fetchData();
+    fetchData(id_token);
 
     // const url = 'http://localhost:5000/user/sign-in';
 
@@ -48,19 +48,19 @@ async function onSignIn(googleUser) {
     //     body: { data: id_token },
     // })
 
- 
+
 }
 
-const fetchData = async () => {
+const fetchData = async (id_token) => {
     const rawResponse = await fetch('http://localhost:5000/user/sign-in', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({id_token})
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ data: id_token })
     });
     const content = await rawResponse.json();
-  
+
     console.log(content);
-  }
+}
