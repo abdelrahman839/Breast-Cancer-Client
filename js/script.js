@@ -29,7 +29,7 @@ async function onSignIn(googleUser) {
     var id_token = await googleUser.getAuthResponse().id_token;
     $.post(`http://localhost:5000/user/sign-in?id_token=${id_token}`);
     localStorage.setItem('Breast-Cancer-Token', id_token);
-
+    checkToken();
 }
 
 const checkToken = () => {
