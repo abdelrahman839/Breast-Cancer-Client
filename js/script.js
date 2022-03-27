@@ -32,44 +32,9 @@ async function onSignIn(googleUser) {
     // console.log("Image URL: " + profile.getImageUrl());
     // console.log("Email: " + profile.getEmail());
 
-    // The ID token you need to pass to your backend:
-    // var id_token = await googleUser.getAuthResponse().id_token;
-    // console.log("ID Token: " + id_token);
-    // const data = { "test": "ds", "lol": "dsd" }
-
-
-    var xhr = new XMLHttpRequest();
-    var url = "http://localhost:5000/user/sign-in";
-    xhr.open("POST", url);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            // var json = JSON.parse(xhr.responseText);
-            // console.log(json.email + ", " + json.password);
-        }
-    };
-    var data = JSON.stringify({"email": "hey@mail.com", "password": "101010"});
-    xhr.send(data);
-
-    // await fetch('http://localhost:5000/user/sign-in', {
-    //     mode: 'no-cors',
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body: 'test=lol'
-    // });
-
-    // const url = 'http://localhost:5000/user/sign-in';
-
-    // await fetch(url, {
-    //     method: 'POST',
-    //     headers: {
-    //         "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
-    //     },
-    //     credentials: 'include',
-    //     body: { data: id_token },
-    // })
+    // // The ID token you need to pass to your backend:
+    var id_token = await googleUser.getAuthResponse().id_token;
+    $.post(`http://localhost:5000/user/sign-in?id_token=${id_token}`);
 
 
 }
