@@ -39,8 +39,7 @@ async function onSignIn(googleUser) {
     await fetch('http://localhost:5000/user/sign-in', {
         method: 'POST',
         headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
         },
         body: `${id_token}`
     });
