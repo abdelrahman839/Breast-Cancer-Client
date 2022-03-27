@@ -37,21 +37,43 @@ function onSignIn(googleUser) {
     console.log("ID Token: " + id_token);
 
 
-    const http = new XMLHttpRequest();
+
     const url = 'http://localhost:5000/user/sign-in';
-    http.open('POST', url, true);
 
-    //Send the proper header information along with the request
-    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    fetch(url, {
+        method: 'POST',
+        headers: {
+          "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+        },
+        credentials: 'include',
+        body: id_token,
+      })
+      .then(res.json())
+      .then(res => {
+        // Handle response 
+        console.log('Response: ', res);
+      })
+      .catch(err => {
+        // Handle error 
+        console.log('Error message: ', error);
+      });
 
-    http.onreadystatechange = function () {//Call a function when the state changes.
-        if (http.readyState == 4 && http.status == 200) {
-            alert(http.responseText);
-        }
-    }
-    http.send(JSON.stringify({
-        id_token:id_token,
-    }));
+
+    // const http = new XMLHttpRequest();
+   
+    // http.open('POST', url, true);
+
+    // //Send the proper header information along with the request
+    // http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+    // http.onreadystatechange = function () {//Call a function when the state changes.
+    //     if (http.readyState == 4 && http.status == 200) {
+    //         alert(http.responseText);
+    //     }
+    // }
+    // http.send(JSON.stringify({
+    //     id_token:id_token,
+    // }));
 
 
 
