@@ -42,7 +42,7 @@ async function onSignIn(googleUser) {
     xhr.open("POST", 'http://localhost:5000/user/sign-in', true);
 
     //Send the proper header information along with the request
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.setRequestHeader("Content-Type", "application/json");
 
     xhr.onreadystatechange = function () { // Call a function when the state changes.
         if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
