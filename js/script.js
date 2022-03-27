@@ -40,7 +40,7 @@ async function onSignIn(googleUser) {
 
     var xhr = new XMLHttpRequest();
     var url = "http://localhost:5000/user/sign-in";
-    xhr.open("POST", url, true);
+    xhr.open("POST", url);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
