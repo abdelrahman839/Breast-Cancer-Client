@@ -10,10 +10,27 @@ let deleteDr = document.querySelectorAll('.delete-icon-dr');
 let deleteBtn = document.querySelectorAll('.delete-btn');
 
 
+const insertGmailValues = () => {
+    const firstName = document.getElementById('first-name');
+    const lastName = document.getElementById('last-name');
+    const email = document.getElementById('email');
+
+    firstName.value = localStorage.getItem('First-Name');
+    lastName.value = localStorage.getItem('Last-Name');
+    email.value = localStorage.getItem('Email');
+
+    firstName.setAttribute("disabled","");
+    lastName.setAttribute("disabled","");
+    email.setAttribute("disabled","");
+
+}
+insertGmailValues()
+
+
 add.addEventListener('click', function (e) {
 
     addNewSection();
-    
+
 
 
     howMany = document.querySelectorAll('.how-many-sections');
@@ -158,3 +175,5 @@ const addNewSection = () => {
 const saveCheack = () => {
     add.innerHTML = `<i class="fa-solid fa-bookmark"></i>`;
 }
+
+
