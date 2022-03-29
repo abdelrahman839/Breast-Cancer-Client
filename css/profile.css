@@ -99,6 +99,12 @@
 .delete-btn{
     display: none;
 }
+.delete-btn-medic{
+    display: none;
+}
+.warning-class{
+    border:2px solid red !important;
+}
 
 @media screen and (max-width:768px) {
     .patient-section h2 {

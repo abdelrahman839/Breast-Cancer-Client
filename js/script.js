@@ -13,8 +13,11 @@ const checkCancer = () => {
 
         if (check >= 3) {
             window.location.href = "/public/hospitals.html";
+            localStorage.setItem('hasCancer', "true");
         } else {
             window.location.href = "/public/blog.html";
+            localStorage.setItem('hasCancer', "false");
+
         }
     }
 
