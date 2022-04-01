@@ -63,6 +63,7 @@ add.addEventListener('click', function (e) {
 });
 
 const addNewSection = () => {
+    document.getElementById('medic-headers').style.display = "block";
     deleteMedic.forEach(element => element.style.display = 'none');
     deleteMedicBtn.forEach(element => element.style.display = 'none')
 
@@ -115,17 +116,28 @@ const calcTimeSection = (value, index) => {
 
 const displayMedication = () => {
     if (localStorage.getItem('medication-list') != null) {
+        deleteMedicShow.style.display = "block";
+
         medicationArr = JSON.parse(localStorage.getItem('medication-list'))
         if (medicationArr) {
             let container = '';
             medicationArr.forEach(ele => {
                 container += ele;
-                console.log('first')
+                console.log('test')
             })
 
             document.getElementById('treatment-saved-body').innerHTML = container;
         }
+    } else {
+        deleteMedicShow.style.display = "none";
+        document.getElementById('medic-headers').style.display = "none";
     }
+    // if (!JSON.parse(localStorage.getItem('medication-list')).length) {
+    //     deleteMedicShow.style.display = "none";
+    //     document.getElementById('medic-headers').style.display = "none";
+
+    // }
+
 
 }
 displayMedication()
@@ -179,6 +191,7 @@ addDr.addEventListener('click', function (e) {
 })
 
 const addDrSection = () => {
+    document.getElementById('dr-headers').style.display = "block";
     deleteDr.forEach(element => element.style.display = 'none');
     deleteBtn.forEach(element => element.style.display = 'none')
 
@@ -227,7 +240,7 @@ deleteDrShow.addEventListener('click', function (e) {
 
 const displayDoctors = () => {
     if (localStorage.getItem('doctors-list') != null) {
-
+        deleteDrShow.style.display = "block";
         drArr = JSON.parse(localStorage.getItem('doctors-list'))
         if (drArr) {
             console.log('first')
@@ -239,7 +252,18 @@ const displayDoctors = () => {
 
             document.getElementById('dr-body-final').innerHTML = container;
         }
+
+    } else {
+        deleteDrShow.style.display = "none";
+        document.getElementById('dr-headers').style.display = "none";
+
     }
+    // if (localStorage.getItem('doctors-list') || !JSON.parse(localStorage.getItem('doctors-list')).length) {
+    //     deleteDrShow.style.display = "none";
+    //     document.getElementById('dr-headers').style.display = "none";
+    //     console.log("lol")
+
+    // }
 
 }
 displayDoctors();
@@ -270,6 +294,7 @@ const preDeleteDr = () => {
             localStorage.setItem('doctors-list', JSON.stringify(drArr))
             displayDoctors()
             preDeleteDr()
+            fetchDeleteDr(index);
         })
     })
 }
@@ -368,14 +393,34 @@ const saveCheack = (id) => {
 
             `;
             drArr.push(document.getElementById('dr-body-final').innerHTML);
-            localStorage.setItem('doctors-list', JSON.stringify(drArr))
-            displayDoctors();
-            console.log(drArr.length)
+            localStorage.setItem('doctors-list', JSON.stringify(drArr));
+            fetchDr({ "name": `${drBody.querySelector('.name-section').value}`, "DateOfVisit": `${drBody.querySelector('.how-many-sections').value}` })
             drBody.innerHTML = '';
-            preDeleteDr()
+            displayDoctors();
+            preDeleteDr();
+
+
         }
         return ckeck;
 
     }
 
+}
+
+const fetchDr = async (data) => {
+
+    await $.ajax({
+        url: `http://localhost:5000/user/add-doctor?id_token=${localStorage.getItem('Breast-Cancer-Token')}`,
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+    })
+}
+const fetchDeleteDr = async (data)=>{
+    await $.ajax({
+        url: `http://localhost:5000/user/delete-doctor?id_token=${localStorage.getItem('Breast-Cancer-Token')}`,
+        type: 'DELETE',
+        contentType: 'application/json',
+        data: JSON.stringify({"index":data}),
+    })
 }
