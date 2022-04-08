@@ -15,6 +15,8 @@ let deleteMedic = document.querySelectorAll('.delete-icon-medic');
 let deleteMedicBtn = document.querySelectorAll('.delete-btn-medic');
 const email = localStorage.getItem('Email');
 
+// user details
+let phone = 'unset', birthData = 'unset', gender = 'female', smoker = false;
 
 
 const insertGmailValues = () => {
@@ -33,6 +35,60 @@ const insertGmailValues = () => {
 }
 insertGmailValues();
 
+const insertFinalValues = ()=>{
+document.getElementById('phone').value = localStorage.getItem('phone');
+document.getElementById('date-of-birth').value = localStorage.getItem('birthData');
+if(localStorage.getItem('smoker')=="true"){
+    document.getElementById('smoking').checked=true;
+}else{
+    document.getElementById('not-smoking').checked=true;
+
+}
+if(localStorage.getItem('gender')=="male"){
+    document.getElementById('male').checked =true;
+}else{
+    document.getElementById('female').checked =true;
+}
+
+}
+insertFinalValues()
+const addFinalDetails = (e) => {
+    document.getElementById('save-finals').style.display = "block";
+    if (e.name == "phone") {
+        console.log(e.value);
+        phone = e.value;
+        localStorage.setItem("phone", `${phone}`)
+    } else if (e.name == "date") {
+        birthData = e.value;
+        localStorage.setItem("birthData", birthData)
+    } else if (e.name == "female" || e.name == "male") {
+        gender = e.name;
+        localStorage.setItem("gender", `${gender}`)
+
+    } else {
+        if (e.name == "smoking") {
+            smoker = true;
+            localStorage.setItem("smoker", "true")
+
+        } else {
+            smoker = false;
+            localStorage.setItem("smoker", "false")
+        }
+    }
+
+
+
+}
+const saveFinalDetails = async () => {
+    document.getElementById('save-finals').style.display = "none";
+    await $.ajax({
+        url: `http://localhost:8080/user/update?email=${localStorage.getItem('Email')}`,
+        type: 'PUT',
+        contentType: 'application/json',
+        data: JSON.stringify({ "phone": localStorage.getItem('phone'), "gender": localStorage.getItem('gender'), "birthData":  localStorage.getItem('birthData'), "smoker":  localStorage.getItem('smoker') }),
+    })
+
+}
 //  medication Section 
 add.addEventListener('click', function (e) {
 
@@ -174,7 +230,8 @@ const preDeleteMedic = () => {
             medicationArr.splice(index, 1);
             localStorage.setItem('medication-list', JSON.stringify(medicationArr))
             displayMedication()
-            preDeleteMedic()
+            preDeleteMedic();
+            fetchDelete(index, "medication");
         })
     })
 }
@@ -294,11 +351,12 @@ const preDeleteDr = () => {
             localStorage.setItem('doctors-list', JSON.stringify(drArr))
             displayDoctors()
             preDeleteDr()
-            fetchDeleteDr(index);
+            fetchDelete(index, "doctor");
         })
     })
 }
-preDeleteDr()
+preDeleteDr();
+
 
 
 // Commen Functions
@@ -321,9 +379,12 @@ const saveCheack = (id) => {
             });
             const timeValues = treatmentBody.querySelectorAll('.final-time-section');
             let container = ''
-            timeValues.forEach(val => {
+            let array = [];
+            timeValues.forEach((val, index) => {
                 container += `<p>${val.value}</p>`
+                array.push(val.value)
             })
+            console.log(array)
             document.getElementById('treatment-saved-body').innerHTML = `
             <div class="col-4 d-flex align-items-end flex-column">
             <div class=" w-100 form-group   my-2 d-flex time-section ${timeValues.length == 1 ? 'justify-content-end' : 'justify-content-between'}  text-right">
@@ -347,7 +408,8 @@ const saveCheack = (id) => {
         </div>
             `;
             medicationArr.push(document.getElementById('treatment-saved-body').innerHTML);
-            localStorage.setItem('medication-list', JSON.stringify(medicationArr))
+            localStorage.setItem('medication-list', JSON.stringify(medicationArr));
+            fetchAdd({ "name": `${treatmentBody.querySelector('.name-section').value}`, "numberOfTimes": `${treatmentBody.querySelector('.how-many-sections').value}`, "medicationTime": `${array}` }, "medication")
             displayMedication();
             console.log(medicationArr.length)
             treatmentBody.innerHTML = '';
@@ -394,7 +456,7 @@ const saveCheack = (id) => {
             `;
             drArr.push(document.getElementById('dr-body-final').innerHTML);
             localStorage.setItem('doctors-list', JSON.stringify(drArr));
-            fetchDr({ "name": `${drBody.querySelector('.name-section').value}`, "DateOfVisit": `${drBody.querySelector('.how-many-sections').value}` })
+            fetchAdd({ "name": `${drBody.querySelector('.name-section').value}`, "DateOfVisit": `${drBody.querySelector('.how-many-sections').value}` }, "doctor")
             drBody.innerHTML = '';
             displayDoctors();
             preDeleteDr();
@@ -407,20 +469,22 @@ const saveCheack = (id) => {
 
 }
 
-const fetchDr = async (data) => {
+const fetchAdd = async (data, category) => {
+
 
     await $.ajax({
-        url: `http://localhost:5000/user/add-doctor?id_token=${localStorage.getItem('Breast-Cancer-Token')}`,
+        url: `http://localhost:8080/user/add?category=${category}&email=${localStorage.getItem('Email')}`,
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(data),
     })
 }
-const fetchDeleteDr = async (data)=>{
+
+const fetchDelete = async (data, category) => {
     await $.ajax({
-        url: `http://localhost:5000/user/delete-doctor?id_token=${localStorage.getItem('Breast-Cancer-Token')}`,
+        url: `http://localhost:8080/user/delete?category=${category}&email=${localStorage.getItem('Email')}`,
         type: 'DELETE',
         contentType: 'application/json',
-        data: JSON.stringify({"index":data}),
+        data: JSON.stringify({ "index": data }),
     })
 }

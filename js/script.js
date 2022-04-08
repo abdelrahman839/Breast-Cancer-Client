@@ -1,4 +1,4 @@
-const checkCancer = () => {
+const checkCancer = async () => {
     const selected = $("input[type='radio']:checked");
     if (selected.length != 6) {
         document.querySelector('.error-lable').style.display = "block";
@@ -12,11 +12,23 @@ const checkCancer = () => {
         }
 
         if (check >= 3) {
-            window.location.href = "/public/hospitals.html";
             localStorage.setItem('hasCancer', "true");
+            await $.ajax({
+                url: `http://localhost:8080/user/update-cancer?email=${localStorage.getItem('Email')}`,
+                type: 'PUT',
+                contentType: 'application/json',
+                data: JSON.stringify({ "hasCancer": true }),
+            });
+            window.location.href = "/public/hospitals.html";
         } else {
-            window.location.href = "/public/blog.html";
             localStorage.setItem('hasCancer', "false");
+            await $.ajax({
+                url: `http://localhost:8080/user/update-cancer?email=${localStorage.getItem('Email')}`,
+                type: 'PUT',
+                contentType: 'application/json',
+                data: JSON.stringify({ "hasCancer": false }),
+            });
+            window.location.href = "/public/blog.html";
 
         }
     }

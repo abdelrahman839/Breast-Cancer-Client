@@ -84,13 +84,14 @@
                 </div>
                 <div class="d-flex justify-content-between align-items-center text-right  mb-3 ">
                     <div class="form-grup ">
-                        <input type="number" class="form-control ">
+                        <input id="phone" name="phone" type="number" class="form-control " onchange="addFinalDetails(this)"
+                            onkeyup="addFinalDetails(this)">
                     </div>
                     <h5>التليفون</h5>
                 </div>
                 <div class="d-flex justify-content-between align-items-center text-right  mb-3 ">
                     <div class="form-grup ">
-                        <input type="date" class="form-control ">
+                        <input id="date-of-birth" name="date" type="date" class="form-control " onchange="addFinalDetails(this)">
                     </div>
                     <h5>تاريخ الميلاد</h5>
                 </div>
@@ -100,11 +101,11 @@
 
                         <div class="btn-group btn-group-toggle d-flex justify-content-between " data-toggle="buttons">
                             <label class="btn btn-outline-secondary rounded mr-5">
-                                <input type="radio" name="gender" id="gender1"> انثي
+                                <input id="female" type="radio" name="female" onclick="addFinalDetails(this)"> انثي
                             </label>
 
                             <label class="btn btn-outline-secondary rounded">
-                                <input type="radio" name="gender" id="gender2"> ذكر
+                                <input id="male" type="radio" name="male" onclick="addFinalDetails(this)"> ذكر
                             </label>
 
                         </div>
@@ -119,11 +120,11 @@
 
                         <div class="btn-group btn-group-toggle d-flex justify-content-between " data-toggle="buttons">
                             <label class="btn btn-outline-secondary rounded mr-5 w-50">
-                                <input type="radio" name="smoked" id="smoked1"> لا
+                                <input id="not-smoking" type="radio" name="not-smoking" onclick="addFinalDetails(this)"> لا
                             </label>
 
                             <label class="btn btn-outline-secondary rounded w-50">
-                                <input type="radio" name="smoked" id="smoked2"> نعم
+                                <input id="smoking" type="radio" name="smoking" onclick="addFinalDetails(this)"> نعم
                             </label>
 
                         </div>
@@ -131,6 +132,12 @@
                     </div>
                     <h5>مدخن</h5>
                 </div>
+
+                <div class="form-grup">
+                    <button id="save-finals" class="btn btn-primary " onclick="saveFinalDetails()">حفظ</button>
+                </div>
+
+
 
 
             </div>
@@ -176,25 +183,25 @@
                 <div id="treatment-body" class="row justify-content-end align-items-center ">
 
 
-                    
 
 
+
+
+                </div>
 
             </div>
 
-        </div>
+            <div class="row my-3 mr-3">
 
-        <div class="row my-3 mr-3">
+                <div id="delete" class="delete action-icons mr-3 ">
+                    <i class="fa-solid fa-trash"></i>
+                </div>
 
-            <div id="delete" class="delete action-icons mr-3 ">
-                <i class="fa-solid fa-trash"></i>
+                <div id="add" class="add action-icons">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+
             </div>
-
-            <div id="add" class="add action-icons">
-                <i class="fa-solid fa-plus"></i>
-            </div>
-
-        </div>
 
         </div>
     </section>

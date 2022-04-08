@@ -105,7 +105,12 @@
 .warning-class{
     border:2px solid red !important;
 }
-
+.form-grup button{
+    background-color: #EC76AC !important;
+    border:none !important;
+    width: 215px !important;
+    display:none;
+}
 @media screen and (max-width:768px) {
     .patient-section h2 {
         font-size: 1.5rem;
@@ -141,6 +146,14 @@
         width: 100% !important;
         margin-bottom: 10px !important;
     }
+    .form-grup button{
+        width: 170px !important;
+    }
 
 
+}
+@media screen and (max-width:320px) {
+    .form-grup button{
+        width: 150px !important;
+    }
 }
