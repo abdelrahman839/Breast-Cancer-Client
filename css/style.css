@@ -52,7 +52,7 @@ footer{
 }
 .rounded-social:hover{
     border-radius:100%;
-    background-color: #EC76AC;
+    background-color: #ec74aa;
     cursor: pointer;
     color: #FFF;
 }

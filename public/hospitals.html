@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="ar">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Mukta:wght@200&family=Roboto:wght@100;300;400;500;700;900&display=swap"
-            rel="stylesheet">
-    
-        <link rel="stylesheet" href="../css/all.min.css">
-        <link rel="stylesheet" href="../css/bootstrap.min.css">
-        <link rel="stylesheet" href="../css/style.css">
-        <title>Breast Cancer</title>
-    </head>
-    
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Mukta:wght@200&family=Roboto:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/all.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/hospitals.css">
+    <title>Breast Cancer</title>
+</head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top ">
         <div class="container-fluid">
@@ -23,6 +25,16 @@
                 <a class="nav-link " href="/public/profile.html">
                     <i class="fa-solid fa-user"></i>
                 </a>
+                <div class="form-group m-0">
+                    <div class="input-group ">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></div>
+                        </div>
+                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="بحث"
+                            onkeyup=" search(this.value)">
+                    </div>
+
+                </div>
                 <ul class="navbar-nav ml-auto ">
                     <li class="nav-item">
                         <a class="nav-link" href="/public/blog.html">توعية</a>
@@ -51,14 +63,29 @@
         </div>
 
     </nav>
-    <div class="d-flex justify-content-center align-items-center vh-100">
-        <img src="../Images/under development.jpg" class="w-50" alt="">
-
+    <div id="not-found">
+       
     </div>
+    <section class="hospitals-section ">
+        <div class="container-fluid">
 
-    <script src="../js/jquery.slim.min.js"></script>
+            <div class="row justify-content-between" id="hospitals-body">
+
+                
+
+            </div>
+            
+
+
+        </div>
+    </section>
+   
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
-    
+    <script src="../js/hospital.js"></script>
+
 </body>
+
 </html>
