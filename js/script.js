@@ -38,7 +38,7 @@ const checkCancer = async () => {
 
 
 
-async function SignIn(googleUser) {
+async function onSignIn(googleUser) {
     var profile = await googleUser.getBasicProfile();
     // // The ID token you need to pass to your backend:
 
