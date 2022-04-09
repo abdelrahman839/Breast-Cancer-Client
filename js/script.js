@@ -47,6 +47,7 @@ async function onSignIn(googleUser) {
         url: `http://localhost:8080/user/sign-in?id_token=${id_token}`,
         type: 'POST',
         contentType: 'application/json',
+        data: JSON.stringify({"data":"data"})
     })
     localStorage.setItem('Breast-Cancer-Token', id_token);
     localStorage.setItem('First-Name', profile.VX);
