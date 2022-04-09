@@ -47,12 +47,12 @@ async function onSignIn(googleUser) {
         url: `http://localhost:8080/user/sign-in?id_token=${id_token}`,
         type: 'POST',
         contentType: 'application/json',
-        data: JSON.stringify({"data":"data"})
+        data: JSON.stringify({ "data": "data" })
     })
-    localStorage.setItem('Breast-Cancer-Token', id_token);
-    localStorage.setItem('First-Name', profile.VX);
-    localStorage.setItem('Last-Name', profile.iW);
-    localStorage.setItem('Email', profile.tv);
+    window.localStorage.setItem('Breast-Cancer-Token', id_token);
+    window.localStorage.setItem('First-Name', profile.VX);
+    window.localStorage.setItem('Last-Name', profile.iW);
+    window.localStorage.setItem('Email', profile.tv);
     checkToken();
 }
 
