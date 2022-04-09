@@ -42,7 +42,7 @@ async function onSignIn(googleUser) {
     var profile = await googleUser.getBasicProfile();
     // // The ID token you need to pass to your backend:
     var id_token = await googleUser.getAuthResponse().id_token;
-    $.post(`http://localhost:8080/user/sign-in?id_token=${id_token}`);
+    await $.post(`http://localhost:8080/user/sign-in?id_token=${id_token}`);
     localStorage.setItem('Breast-Cancer-Token', id_token);
     localStorage.setItem('First-Name', profile.VX);
     localStorage.setItem('Last-Name', profile.iW);
