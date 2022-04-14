@@ -62,14 +62,14 @@ async function onSignIn(googleUser) {
 
     }).done(function (data) {
         let Payload = data; // create an object with the key of the array
-        console.log(Payload);
+        console.log(Payload.Message=="logged in successfully")
     });
     window.localStorage.setItem('Breast-Cancer-Token', id_token);
     window.localStorage.setItem('First-Name', profile.VX);
     window.localStorage.setItem('Last-Name', profile.iW);
     window.localStorage.setItem('Email', profile.tv);
     checkToken();
-    console.log("user")
+   
 }
 const getUserData = async () => {
 
