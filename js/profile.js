@@ -497,7 +497,7 @@ const fetchAdd = async (data, category) => {
         url: `http://localhost:8080/user/add?category=${category}&email=${localStorage.getItem('Email')}&phone=${localStorage.getItem('phone')}`,
         type: 'POST',
         contentType: 'application/json',
-        data: JSON.stringify(data),
+        data: data,
     })
 }
 
