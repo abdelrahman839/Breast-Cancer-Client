@@ -57,6 +57,7 @@ async function onSignIn(googleUser) {
         url: `http://localhost:8080/user/sign-in?id_token=${id_token}`,
         type: 'POST',
         contentType: 'application/json',
+        data: JSON.stringify({"data":"data"}),
         success: function (data) {
             const user = $.parseJSON(data); // create an object with the key of the array
             console.log(user); // where html is the key of array that you want, $response['html'] = "<a>something..</a>";
