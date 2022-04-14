@@ -106,7 +106,7 @@ const saveFinalDetails = async () => {
         url: `http://localhost:8080/user/update?email=${localStorage.getItem('Email')}&phone=${localStorage.getItem('phone')}`,
         type: 'PUT',
         contentType: 'application/json',
-        data: JSON.stringify({ "phone": localStorage.getItem('phone'), "gender": localStorage.getItem('gender'), "birthData": localStorage.getItem('birthData'), "smoker": localStorage.getItem('smoker'),"email": localStorage.getItem('Email'),"name": localStorage.getItem('First-Name')}),
+        data: JSON.stringify({ "phone": localStorage.getItem('phone'), "gender": localStorage.getItem('gender'), "birthData": localStorage.getItem('birthData'), "smoker": localStorage.getItem('smoker'), "email": localStorage.getItem('Email'), "name": localStorage.getItem('First-Name') }),
     })
 
 }
@@ -496,8 +496,9 @@ const fetchAdd = async (data, category) => {
     await $.ajax({
         url: `http://localhost:8080/user/add?category=${category}&email=${localStorage.getItem('Email')}&phone=${localStorage.getItem('phone')}`,
         type: 'POST',
-        contentType: 'application/json',
-        data: data,
+        contentType: 'application/json; charset=utf-8',
+        dataType: "json",
+        data: JSON.stringify(data),
     })
 }
 
