@@ -34,7 +34,7 @@ const insertHospitals = async () => {
 
         </div>
         <div class="row justify-content-end px-3 align-items-center mt-2">
-            <p class="pr-3 m-0 text-muted">${ele.phone}</p>
+            <p class="pr-3 m-0 text-muted w-75">${ele.phone}</p>
             <i class="fa-solid fa-phone-flip"></i>
         </div>
     </div>

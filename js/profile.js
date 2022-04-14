@@ -16,45 +16,66 @@ let deleteMedicBtn = document.querySelectorAll('.delete-btn-medic');
 const email = localStorage.getItem('Email');
 
 // user details
-let phone = 'unset', birthData = 'unset', gender = 'female', smoker = false;
+let phone = 'unset', birthData = 'unset', gender = 'female', smoker = false, firstName = "unset", lastName = "unset", Email = 'unset';
 
 
 const insertGmailValues = () => {
     const firstName = document.getElementById('first-name');
     const lastName = document.getElementById('last-name');
     const email = document.getElementById('email');
-
+    const phone = document.getElementById('phone');
     firstName.value = localStorage.getItem('First-Name');
     lastName.value = localStorage.getItem('Last-Name');
     email.value = localStorage.getItem('Email');
+    if (!email.value == '') {
+        firstName.setAttribute("disabled", "");
+        lastName.setAttribute("disabled", "");
+        email.setAttribute("disabled", "");
+    } else {
+        phone.setAttribute("disabled", "");
+    }
 
-    firstName.setAttribute("disabled", "");
-    lastName.setAttribute("disabled", "");
-    email.setAttribute("disabled", "");
 
 }
 insertGmailValues();
 
-const insertFinalValues = ()=>{
-document.getElementById('phone').value = localStorage.getItem('phone');
-document.getElementById('date-of-birth').value = localStorage.getItem('birthData');
-if(localStorage.getItem('smoker')=="true"){
-    document.getElementById('smoking').checked=true;
-}else{
-    document.getElementById('not-smoking').checked=true;
+const insertFinalValues = () => {
+    document.getElementById('phone').value = localStorage.getItem('phone');
+    document.getElementById('date-of-birth').value = localStorage.getItem('birthData');
+    document.getElementById('first-name').value = localStorage.getItem('First-Name');
+    document.getElementById('last-name').value = localStorage.getItem('Last-Name');;
+    document.getElementById('email').value = localStorage.getItem('Email');;
 
-}
-if(localStorage.getItem('gender')=="male"){
-    document.getElementById('male').checked =true;
-}else{
-    document.getElementById('female').checked =true;
-}
+    if (localStorage.getItem('smoker') == "true") {
+        document.getElementById('smoking').checked = true;
+    } else {
+        document.getElementById('not-smoking').checked = true;
+
+    }
+    if (localStorage.getItem('gender') == "male") {
+        document.getElementById('male').checked = true;
+    } else {
+        document.getElementById('female').checked = true;
+    }
 
 }
 insertFinalValues()
 const addFinalDetails = (e) => {
     document.getElementById('save-finals').style.display = "block";
-    if (e.name == "phone") {
+    if (e.id == "first-name") {
+        firstName = e.value;
+        localStorage.setItem('First-Name', firstName);
+    }
+    else if (e.id == "last-name") {
+        Email = e.value;
+        localStorage.setItem('Last-Name', Email);
+
+    }
+    else if (e.id == "email") {
+        Email = e.value;
+        localStorage.setItem('Email', Email);
+    }
+    else if (e.name == "phone") {
         console.log(e.value);
         phone = e.value;
         localStorage.setItem("phone", `${phone}`)
@@ -82,10 +103,10 @@ const addFinalDetails = (e) => {
 const saveFinalDetails = async () => {
     document.getElementById('save-finals').style.display = "none";
     await $.ajax({
-        url: `http://localhost:8080/user/update?email=${localStorage.getItem('Email')}`,
+        url: `http://localhost:8080/user/update?email=${localStorage.getItem('Email')}&phone=${localStorage.getItem('phone')}`,
         type: 'PUT',
         contentType: 'application/json',
-        data: JSON.stringify({ "phone": localStorage.getItem('phone'), "gender": localStorage.getItem('gender'), "birthData":  localStorage.getItem('birthData'), "smoker":  localStorage.getItem('smoker') }),
+        data: JSON.stringify({ "phone": localStorage.getItem('phone'), "gender": localStorage.getItem('gender'), "birthData": localStorage.getItem('birthData'), "smoker": localStorage.getItem('smoker'),"email": localStorage.getItem('Email'),"name": localStorage.getItem('First-Name')}),
     })
 
 }
@@ -473,7 +494,7 @@ const fetchAdd = async (data, category) => {
 
 
     await $.ajax({
-        url: `http://localhost:8080/user/add?category=${category}&email=${localStorage.getItem('Email')}`,
+        url: `http://localhost:8080/user/add?category=${category}&email=${localStorage.getItem('Email')}&phone=${localStorage.getItem('phone')}`,
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(data),
@@ -482,7 +503,7 @@ const fetchAdd = async (data, category) => {
 
 const fetchDelete = async (data, category) => {
     await $.ajax({
-        url: `http://localhost:8080/user/delete?category=${category}&email=${localStorage.getItem('Email')}`,
+        url: `http://localhost:8080/user/delete?category=${category}&email=${localStorage.getItem('Email')}&phone=${localStorage.getItem('phone')}`,
         type: 'DELETE',
         contentType: 'application/json',
         data: JSON.stringify({ "index": data }),

@@ -18,7 +18,21 @@
     flex-direction: column;
     align-items: center;
 }
+.login2{
+    width: 350px;
+    height: 350px;
+    background-color: #FFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    display:none;
 
+}
+.invalid-num{
+    background-color: #f8d7da;
+    padding: 10px;
+    display: none;
+}
 .header {
     background-image: url('../Images/header.jpg');
     height: 100vh;

@@ -43,10 +43,25 @@
             </button>
 
 
-            <button class="btn btn-primary rounded-pill px-4 py-3">
+            <button class="btn btn-primary rounded-pill px-4 py-3" onclick="loginMobileToggle('mobile')">
                 <i class="fa-solid fa-phone mr-1"></i>
                 <span> سجل الدخول باستخدام الهاتف</span>
             </button>
+        </div>
+        <div class="login2">
+            <h2 class="my-5">سجل الدخول</h2>
+            <div class="rounded-pill px-4 py-3  d-flex justify-content-center align-items-center overflow-hidden">
+                <input id="mobile-input" class="form-control rounded-pill" type="number" placeholder="phone number">
+            </div>
+            <div class="rounded-pill mb-2 invalid-num">رقم غير صحيح</div>
+            <div class="row justify-content-center align-items-center">
+                <button class="btn btn-danger rounded-pill px-4 py-2 mr-2" onclick="loginMobileToggle('home')">
+                    الغاء
+                </button>
+                <button class="btn btn-primary rounded-pill px-4 py-2" onclick="loginWithMobile()">
+                    تسجيل
+                </button>
+            </div>
         </div>
     </div>
 

@@ -1,3 +1,14 @@
+const checkToken = () => {
+    if (localStorage.getItem('Breast-Cancer-Token') == null) {
+        document.querySelector('.required-layer').style.display = 'flex';
+    }
+    else {
+        document.querySelector('.required-layer').style.display = 'none';
+
+    }
+}
+checkToken();
+
 const checkCancer = async () => {
     const selected = $("input[type='radio']:checked");
     if (selected.length != 6) {
@@ -36,9 +47,8 @@ const checkCancer = async () => {
 
 }
 
-
-
 async function onSignIn(googleUser) {
+    checkToken();
     var profile = await googleUser.getBasicProfile();
     // // The ID token you need to pass to your backend:
 
@@ -56,13 +66,30 @@ async function onSignIn(googleUser) {
     checkToken();
 }
 
-const checkToken = () => {
-    if (localStorage.getItem('Breast-Cancer-Token') == null) {
-        document.querySelector('.required-layer').style.display = 'flex';
-    }
-    else {
-        document.querySelector('.required-layer').style.display = 'none';
-
+const loginMobileToggle = (check) => {
+    if (check == 'mobile') {
+        document.querySelector('.login').style.display = 'none';
+        document.querySelector('.login2').style.display = 'flex';
+    } else {
+        document.querySelector('.login2').style.display = 'none';
+        document.querySelector('.login').style.display = 'flex';
     }
 }
-checkToken();
+const loginWithMobile = async() => {
+    const regex = new RegExp('^01[0125][0-9]{8}$');
+    const phone = document.getElementById('mobile-input').value;
+    if (regex.test(phone)) {
+        document.querySelector('.invalid-num').style.display = 'none';
+        await $.ajax({
+            url: `http://localhost:8080/user/sign-in-mobile?phone=${phone}`,
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ "data": "data" })
+        });
+        window.localStorage.setItem('Breast-Cancer-Token', "Breast-Cancer-Token-Mobile");
+        window.localStorage.setItem('phone', phone);
+        checkToken();
+    } else {
+        document.querySelector('.invalid-num').style.display = 'block';
+    }
+}
