@@ -53,11 +53,18 @@ async function onSignIn(googleUser) {
     // // The ID token you need to pass to your backend:
 
     var id_token = await googleUser.getAuthResponse().id_token;
-    const user = await $.ajax({
+    await $.ajax({
         url: `http://localhost:8080/user/sign-in?id_token=${id_token}`,
         type: 'POST',
         contentType: 'application/json',
-        data: JSON.stringify({ "data": "data" })
+        success: function (data) {
+            const user = $.parseJSON(data); // create an object with the key of the array
+            console.log(user); // where html is the key of array that you want, $response['html'] = "<a>something..</a>";
+        },
+        error: function (data) {
+            console.log($.parseJSON(data))
+        }
+
     })
     window.localStorage.setItem('Breast-Cancer-Token', id_token);
     window.localStorage.setItem('First-Name', profile.VX);
