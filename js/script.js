@@ -61,7 +61,7 @@ async function onSignIn(googleUser) {
 
 
     }).done(function (data) {
-        const user = $.parseJSON(data); // create an object with the key of the array
+        const user = JSON.parse(data); // create an object with the key of the array
         console.log(user);
     });
     window.localStorage.setItem('Breast-Cancer-Token', id_token);
