@@ -53,7 +53,7 @@ async function onSignIn(googleUser) {
     // // The ID token you need to pass to your backend:
 
     var id_token = await googleUser.getAuthResponse().id_token;
-    await $.ajax({
+    const user = await $.ajax({
         url: `http://localhost:8080/user/sign-in?id_token=${id_token}`,
         type: 'POST',
         contentType: 'application/json',
@@ -64,6 +64,10 @@ async function onSignIn(googleUser) {
     window.localStorage.setItem('Last-Name', profile.iW);
     window.localStorage.setItem('Email', profile.tv);
     checkToken();
+    console.log(user)
+}
+const getUserData = async () => {
+
 }
 
 const loginMobileToggle = (check) => {
@@ -75,7 +79,7 @@ const loginMobileToggle = (check) => {
         document.querySelector('.login').style.display = 'flex';
     }
 }
-const loginWithMobile = async() => {
+const loginWithMobile = async () => {
     const regex = new RegExp('^01[0125][0-9]{8}$');
     const phone = document.getElementById('mobile-input').value;
     if (regex.test(phone)) {
