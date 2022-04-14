@@ -71,7 +71,7 @@ async function onSignIn(googleUser) {
     window.localStorage.setItem('Last-Name', profile.iW);
     window.localStorage.setItem('Email', profile.tv);
     checkToken();
-    console.log(user)
+    console.log("user")
 }
 const getUserData = async () => {
 
