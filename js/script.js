@@ -81,18 +81,23 @@ const saveInLocalStorage = (data) => {
     let medicationArr = [];
     data.medicationList.forEach(ele => {
         let str = ele.medicationTime[0];
-        let newStr='';
+        let newStr = '';
+        let container = '';
+        let check = 0;
         ele.medicationTime = [];
         for (let i = 0; i < str.length; i++) {
-            newStr+=str[i];
-            if (str[i]==','){
-                ele.medicationTime.push(newStr)
-                newStr='';
+            if (str[i] == ',') {
+                container += `<p>${newStr}</p>`
+                newStr = '';
+                check++;
+                continue;
             }
+            newStr += str[i];
         }
+
         medicationContainer = ` <div class="col-4 d-flex align-items-end flex-column">
         <div class=" w-100 form-group   my-2 d-flex time-section ${ele.numberOfTimes == 1 ? 'justify-content-end' : 'justify-content-between'}  text-right">
-        ${ele.medicationTime[0]}
+        ${check == 0 ? str : container}
         </div>
     </div>
     <div class="col-4 d-flex align-items-end flex-column">
