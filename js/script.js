@@ -50,7 +50,6 @@ const checkCancer = async () => {
 async function onSignIn(googleUser) {
     checkToken();
     var profile = await googleUser.getBasicProfile();
-    console.log(profile)
     // // The ID token you need to pass to your backend:
 
     var id_token = await googleUser.getAuthResponse().id_token;
@@ -66,9 +65,9 @@ async function onSignIn(googleUser) {
         }
     });
     window.localStorage.setItem('Breast-Cancer-Token', id_token);
-    window.localStorage.setItem('First-Name', profile.given_name);
-    window.localStorage.setItem('Last-Name', profile.family_name);
-    window.localStorage.setItem('Email', profile.email);
+    window.localStorage.setItem('First-Name', profile.getGivenName());
+    window.localStorage.setItem('Last-Name', profile.getFamilyName());
+    window.localStorage.setItem('Email', profile.getEmail());
     checkToken();
 
 }
