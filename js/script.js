@@ -93,6 +93,9 @@ const saveInLocalStorage = (data) => {
                 continue;
             }
             newStr += str[i];
+            if(i==str.length) {
+                container += `<p>${newStr}</p>`
+            }
         }
 
         medicationContainer = ` <div class="col-4 d-flex align-items-end flex-column">
