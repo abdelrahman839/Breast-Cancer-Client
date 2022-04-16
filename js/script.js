@@ -47,33 +47,34 @@ const checkCancer = async () => {
 
 }
 
-async function onSignIn(googleUser) {
-    checkToken();
-    var profile = await googleUser.getBasicProfile();
-    // // The ID token you need to pass to your backend:
+// async function onSignIn(googleUser) {
+//     checkToken();
+//     var profile = await googleUser.getBasicProfile();
+//     // // The ID token you need to pass to your backend:
 
-    var id_token = await googleUser.getAuthResponse().id_token;
-    await $.ajax({
-        url: `http://localhost:8080/user/sign-in?id_token=${id_token}`,
-        type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify({ "data": "data" }),
-    }).done(function (data) {
-        let Payload = data; // create an object with the key of the array
-        if (Payload.Message == "logged in successfully") {
-            console.log(Payload)
-        }
-    });
-    window.localStorage.setItem('Breast-Cancer-Token', id_token);
-    window.localStorage.setItem('First-Name', profile.VX);
-    window.localStorage.setItem('Last-Name', profile.iW);
-    window.localStorage.setItem('Email', profile.tv);
-    checkToken();
+//     var id_token = await googleUser.getAuthResponse().id_token;
+//     await $.ajax({
+//         url: `http://localhost:8080/user/sign-in?id_token=${id_token}`,
+//         type: 'POST',
+//         contentType: 'application/json',
+//         data: JSON.stringify({ "data": "data" }),
+//     }).done(function (data) {
+//         let Payload = data; // create an object with the key of the array
+//         if (Payload.Message == "logged in successfully") {
+//             localStorage.setItem('phone',Payload.user.phone);
+//             localStorage.setItem('birthData',Payload.user.birthData);
+//             localStorage.setItem("gender", Payload.user.gender)
+//             localStorage.setItem("smoker", Payload.user.smoker)
+//         }
+//     });
+//     window.localStorage.setItem('Breast-Cancer-Token', id_token);
+//     window.localStorage.setItem('First-Name', profile.VX);
+//     window.localStorage.setItem('Last-Name', profile.iW);
+//     window.localStorage.setItem('Email', profile.tv);
+//     checkToken();
 
-}
-const getUserData = async () => {
+// }
 
-}
 
 const loginMobileToggle = (check) => {
     if (check == 'mobile') {
