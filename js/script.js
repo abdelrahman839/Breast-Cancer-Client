@@ -166,7 +166,31 @@ const loginWithMobile = async () => {
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({ "data": "data" })
-        })
+        }).done(function (data) {
+            let Payload = data; // create an object with the key of the array
+            if (Payload.Message == "logged in successfully") {
+                saveInLocalStorage(Payload.user)
+                window.localStorage.setItem('First-Name', Payload.user.name);
+                window.localStorage.setItem('Email', Payload.user.email);
+                let name = '';
+                let check = 0;
+                for (let i = 0; i < Payload.user.name.length; i++) {
+                    if (Payload.user.name[i] == ' ') {
+                        window.localStorage.setItem('First-Name', name);
+                        check++;
+                        name = '';
+                        continue;
+                    }
+                    name += Payload.user.name[i];
+                    if (check > 0) {
+                        window.localStorage.setItem('Last-Name', name);
+                    }
+                }
+
+
+
+            }
+        });
         window.localStorage.setItem('Breast-Cancer-Token', "Breast-Cancer-Token-Mobile");
         window.localStorage.setItem('phone', phone);
         checkToken();
