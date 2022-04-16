@@ -104,6 +104,29 @@ const saveInLocalStorage = (data) => {
     });
     localStorage.setItem('medication-list', JSON.stringify(medicationArr));
 
+    let doctorsContainer = '';
+    let doctorsArr = [];
+    data.doctorsList.forEach(ele => {
+        doctorsContainer = `<div class="col-5 d-flex align-items-end flex-column">
+        <div class=" w-50 form-group my-2 ">
+            <input type="date" class="form-control how-many-sections" value=${ele.DateOfVisit} disabled>
+        </div>
+    </div>
+    <div class="col-5 d-flex align-items-end flex-column">
+        
+        <div class=" w-50 form-group  my-2 position-relative d-flex">
+ 
+            <input type="text" class="form-control " value=${ele.name} disabled>
+            <button class="btn btn-danger ml-3 delete-btn">Delete</button>
+            <div class="delete-icon delete-icon-dr">
+                <i class="fa-solid fa-minus"></i>
+            </div>
+        </div>
+    </div>`;
+    doctorsArr.push(doctorsContainer)
+    });
+    localStorage.setItem('doctors-list', JSON.stringify(doctorsArr));
+
 }
 
 const loginMobileToggle = (check) => {
