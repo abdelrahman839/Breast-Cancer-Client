@@ -65,9 +65,9 @@ async function onSignIn(googleUser) {
         }
     });
     window.localStorage.setItem('Breast-Cancer-Token', id_token);
-    window.localStorage.setItem('First-Name', profile.VX);
-    window.localStorage.setItem('Last-Name', profile.iW);
-    window.localStorage.setItem('Email', profile.tv);
+    window.localStorage.setItem('First-Name', profile.given_name);
+    window.localStorage.setItem('Last-Name', profile.family_name);
+    window.localStorage.setItem('Email', profile.email);
     checkToken();
 
 }
