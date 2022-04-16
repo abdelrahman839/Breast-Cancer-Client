@@ -58,8 +58,7 @@ async function onSignIn(googleUser) {
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({ "data": "data" }),
-    })
-    .done(function (data) {
+    }).done(function (data) {
         let Payload = data; // create an object with the key of the array
         if (Payload.Message == "logged in successfully") {
             localStorage.setItem('phone',Payload.user.phone);
