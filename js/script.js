@@ -93,7 +93,7 @@ const saveInLocalStorage = (data) => {
                 continue;
             }
             newStr += str[i];
-            if(i==str.length) {
+            if (i == (str.length - 1)) {
                 container += `<p>${newStr}</p>`
             }
         }
