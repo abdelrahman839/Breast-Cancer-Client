@@ -59,15 +59,15 @@ async function onSignIn(googleUser) {
         contentType: 'application/json',
         data: JSON.stringify({ "data": "data" }),
     })
-    // .done(function (data) {
-    //     let Payload = data; // create an object with the key of the array
-    //     if (Payload.Message == "logged in successfully") {
-    //         localStorage.setItem('phone',Payload.user.phone);
-    //         localStorage.setItem('birthData',Payload.user.birthData);
-    //         localStorage.setItem("gender", Payload.user.gender)
-    //         localStorage.setItem("smoker", Payload.user.smoker)
-    //     }
-    // });
+    .done(function (data) {
+        let Payload = data; // create an object with the key of the array
+        if (Payload.Message == "logged in successfully") {
+            localStorage.setItem('phone',Payload.user.phone);
+            localStorage.setItem('birthData',Payload.user.birthData);
+            localStorage.setItem("gender", Payload.user.gender)
+            localStorage.setItem("smoker", Payload.user.smoker)
+        }
+    });
     window.localStorage.setItem('Breast-Cancer-Token', id_token);
     window.localStorage.setItem('First-Name', profile.VX);
     window.localStorage.setItem('Last-Name', profile.iW);
