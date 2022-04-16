@@ -61,10 +61,7 @@ async function onSignIn(googleUser) {
     }).done(function (data) {
         let Payload = data; // create an object with the key of the array
         if (Payload.Message == "logged in successfully") {
-            localStorage.setItem('phone',Payload.user.phone);
-            localStorage.setItem('birthData',Payload.user.birthData);
-            localStorage.setItem("gender", Payload.user.gender)
-            localStorage.setItem("smoker", Payload.user.smoker)
+            saveInLocalStorage(Payload.user)
         }
     });
     window.localStorage.setItem('Breast-Cancer-Token', id_token);
@@ -75,6 +72,39 @@ async function onSignIn(googleUser) {
 
 }
 
+const saveInLocalStorage = (data) => {
+    localStorage.setItem('phone', data.phone);
+    localStorage.setItem('birthData', data.birthData);
+    localStorage.setItem("gender", data.gender);
+    localStorage.setItem("smoker", data.smoker);
+    let medicationContainer = '';
+    let medicationArr = [];
+    data.medicationList.forEach(ele => {
+        medicationContainer = ` <div class="col-4 d-flex align-items-end flex-column">
+        <div class=" w-100 form-group   my-2 d-flex time-section ${ele.numberOfTimes == 1 ? 'justify-content-end' : 'justify-content-between'}  text-right">
+        ${ele.medicationTime[0]}
+        </div>
+    </div>
+    <div class="col-4 d-flex align-items-end flex-column">
+        <div class=" w-50 form-group my-2 ">
+            <input  type="number" class="form-control how-many-sections"  value=${ele.numberOfTimes} disabled>
+        </div>
+    </div>
+    <div class="col-4 d-flex align-items-end flex-column">
+        <div class=" w-50 form-group  my-2 position-relative d-flex">
+            <input type="text" class="form-control name-section" value=${ele.name} disabled>
+                <button class="btn btn-danger ml-3 delete-btn-medic">Delete</button>
+                    <div class="delete-icon delete-icon-medic">
+                        <i class="fa-solid fa-minus"></i>
+                    </div>
+        </div>
+        </div>
+    </div>`;
+    medicationArr.push(medicationContainer)
+    });
+    localStorage.setItem('medication-list', JSON.stringify(medicationArr));
+
+}
 
 const loginMobileToggle = (check) => {
     if (check == 'mobile') {
