@@ -80,6 +80,16 @@ const saveInLocalStorage = (data) => {
     let medicationContainer = '';
     let medicationArr = [];
     data.medicationList.forEach(ele => {
+        let str = ele.medicationTime[0];
+        let newStr='';
+        ele.medicationTime = [];
+        for (let i = 0; i < str.length; i++) {
+            newStr+=str[i];
+            if (str[i]==','){
+                ele.medicationTime.push(newStr)
+                newStr='';
+            }
+        }
         medicationContainer = ` <div class="col-4 d-flex align-items-end flex-column">
         <div class=" w-100 form-group   my-2 d-flex time-section ${ele.numberOfTimes == 1 ? 'justify-content-end' : 'justify-content-between'}  text-right">
         ${ele.medicationTime[0]}
@@ -100,7 +110,7 @@ const saveInLocalStorage = (data) => {
         </div>
         </div>
     </div>`;
-    medicationArr.push(medicationContainer)
+        medicationArr.push(medicationContainer)
     });
     localStorage.setItem('medication-list', JSON.stringify(medicationArr));
 
@@ -123,7 +133,7 @@ const saveInLocalStorage = (data) => {
             </div>
         </div>
     </div>`;
-    doctorsArr.push(doctorsContainer)
+        doctorsArr.push(doctorsContainer)
     });
     localStorage.setItem('doctors-list', JSON.stringify(doctorsArr));
 
