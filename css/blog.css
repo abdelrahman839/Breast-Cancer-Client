@@ -1,17 +1,15 @@
-
-
 .blog-section {
-    background-image: url('../images/logo.png');
+    background-image: url("../images/logo.png");
     background-attachment: fixed;
     background-size: cover;
     background-size: 50% 80%;
     background-position: center center;
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
     position: absolute;
     display: flex;
     justify-content: center;
     width: 100%;
-    padding-top:15vh !important;
+    padding-top: 15vh !important;
 
 }
 
@@ -31,10 +29,11 @@
 }
 
 @media screen and (max-width:960px) {
-    h2{
-        font-size:1.5rem;
+    h2 {
+        font-size: 1.5rem;
     }
-    h5{
+
+    h5 {
         font-size: 1rem;
     }
 }
