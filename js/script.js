@@ -58,13 +58,18 @@ async function onSignIn(googleUser) {
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({ "data": "data" }),
-    })
+    }).done(function (data) {
+        let Payload = data; // create an object with the key of the array
+        if (Payload.Message == "logged in successfully") {
+            console.log(Payload)
+        }
+    });
     window.localStorage.setItem('Breast-Cancer-Token', id_token);
     window.localStorage.setItem('First-Name', profile.VX);
     window.localStorage.setItem('Last-Name', profile.iW);
     window.localStorage.setItem('Email', profile.tv);
     checkToken();
-   
+
 }
 const getUserData = async () => {
 
