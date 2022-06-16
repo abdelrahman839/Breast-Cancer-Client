@@ -2,7 +2,7 @@ let hospitalArr = [];
 const hospitalBody = document.getElementById('hospitals-body');
 const fetchAllHospital = async () => {
     const { data } = await $.ajax({
-        url: `http://localhost:8080/hospital/getAll`,
+        url: `https://breastcancerserver.herokuapp.com/hospital/getAll`,
         type: 'GET',
         contentType: 'application/json',
     })

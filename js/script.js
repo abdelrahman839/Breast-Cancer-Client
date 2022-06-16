@@ -25,7 +25,7 @@ const checkCancer = async () => {
         if (check >= 3) {
             localStorage.setItem('hasCancer', "true");
             await $.ajax({
-                url: `http://localhost:8080/user/update-cancer?email=${localStorage.getItem('Email')}`,
+                url: `https://breastcancerserver.herokuapp.com/user/update-cancer?email=${localStorage.getItem('Email')}`,
                 type: 'PUT',
                 contentType: 'application/json',
                 data: JSON.stringify({ "hasCancer": true }),
@@ -34,7 +34,7 @@ const checkCancer = async () => {
         } else {
             localStorage.setItem('hasCancer', "false");
             await $.ajax({
-                url: `http://localhost:8080/user/update-cancer?email=${localStorage.getItem('Email')}`,
+                url: `https://breastcancerserver.herokuapp.com/user/update-cancer?email=${localStorage.getItem('Email')}`,
                 type: 'PUT',
                 contentType: 'application/json',
                 data: JSON.stringify({ "hasCancer": false }),
@@ -54,7 +54,7 @@ async function onSignIn(googleUser) {
 
     var id_token = await googleUser.getAuthResponse().id_token;
     await $.ajax({
-        url: `http://localhost:8080/user/sign-in?id_token=${id_token}`,
+        url: `https://breastcancerserver.herokuapp.com/user/sign-in?id_token=${id_token}`,
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({ "data": "data" }),
@@ -162,7 +162,7 @@ const loginWithMobile = async () => {
     if (regex.test(phone)) {
         document.querySelector('.invalid-num').style.display = 'none';
         await $.ajax({
-            url: `http://localhost:8080/user/sign-in-mobile?phone=${phone}`,
+            url: `https://breastcancerserver.herokuapp.com/user/sign-in-mobile?phone=${phone}`,
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({ "data": "data" })

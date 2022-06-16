@@ -103,7 +103,7 @@ const addFinalDetails = (e) => {
 const saveFinalDetails = async () => {
     document.getElementById('save-finals').style.display = "none";
     await $.ajax({
-        url: `http://localhost:8080/user/update?email=${localStorage.getItem('Email')}&phone=${localStorage.getItem('phone')}`,
+        url: `https://breastcancerserver.herokuapp.com/user/update?email=${localStorage.getItem('Email')}&phone=${localStorage.getItem('phone')}`,
         type: 'PUT',
         contentType: 'application/json',
         data: JSON.stringify({ "phone": localStorage.getItem('phone'), "gender": localStorage.getItem('gender'), "birthData": localStorage.getItem('birthData'), "smoker": localStorage.getItem('smoker'), "email": localStorage.getItem('Email'), "name": localStorage.getItem('First-Name') }),
@@ -494,7 +494,7 @@ const fetchAdd = async (data, category) => {
 
 
     await $.ajax({
-        url: `http://localhost:8080/user/add?category=${category}&email=${localStorage.getItem('Email')}&phone=${localStorage.getItem('phone')}`,
+        url: `https://breastcancerserver.herokuapp.com/user/add?category=${category}&email=${localStorage.getItem('Email')}&phone=${localStorage.getItem('phone')}`,
         type: 'POST',
         contentType: 'application/json; charset=utf-8',
         dataType: "json",
@@ -504,7 +504,7 @@ const fetchAdd = async (data, category) => {
 
 const fetchDelete = async (data, category) => {
     await $.ajax({
-        url: `http://localhost:8080/user/delete?category=${category}&email=${localStorage.getItem('Email')}&phone=${localStorage.getItem('phone')}`,
+        url: `https://breastcancerserver.herokuapp.com/user/delete?category=${category}&email=${localStorage.getItem('Email')}&phone=${localStorage.getItem('phone')}`,
         type: 'DELETE',
         contentType: 'application/json',
         data: JSON.stringify({ "index": data }),
